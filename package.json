@@ -1,0 +1,15 @@
+{
+  "scripts": {
+    "test": "protractor conf.js",
+    "app-start": "docker run -p 4400:80 pedroballona/tester-test:1.0"
+  },
+  "dependencies": {
+    "chai": "^4.3.6",
+    "protractor": "^7.0.0",
+    "webdriver-manager": "^12.1.8"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
+    "faker-br": "^0.4.1"
+  }
+}
