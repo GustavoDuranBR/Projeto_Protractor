@@ -152,7 +152,7 @@ describe('Cadastro de Produto: ', function(){
 
 ```
 
-<p> POr fim o teste redireciona para a página principal e finaliza os testes. </p>
+<p> Por fim o teste redireciona para a página principal e finaliza os testes. </p>
 
 ```bash
 describe('Voltar para a HomePage: ', function(){
