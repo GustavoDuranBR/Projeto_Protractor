@@ -13,6 +13,19 @@ var myAccountAdm = require('../pageObjects/myAccountAdm.po.js');
 var myAccount = require('../pageObjects/myAccount.po.js');
 
  
+describe('Cadastrar usuário simples: ', function(){
+    beforeAll(function(){
+        homePage.visit();
+    });
+    
+    it('Cadastro de Usuario Simples na página de leilão',
+    async function(){
+        await homePage.btnSignUp.click();
+        await cadastroSimples.loginUser(faker.name.firstName(), faker.internet.userName(),
+        faker.internet.password(), faker.internet.email(), fakerbr.br.cpf());
+        expect(await myAccount.getTextName()).to.be.eq("Regal Auctions")
+    })
+});
 
 describe('Acessar página de leilão: ', function(){
     beforeAll(function(){
@@ -27,6 +40,7 @@ describe('Acessar página de leilão: ', function(){
         expect(await myAccountAdm.getTextName()).to.be.eq("Regal Auctions")
     })
 });
+
 describe('Validar Campo CPF: ', function(){
     beforeAll(function(){
         homePage.visit();
@@ -40,6 +54,7 @@ describe('Validar Campo CPF: ', function(){
         expect(await myAccountAdm.getTextName()).to.be.eq("Regal Auctions")
     })
 });
+
 describe('Validar Campo Senha: ', function(){
     beforeAll(function(){
         homePage.visit();
@@ -53,6 +68,7 @@ describe('Validar Campo Senha: ', function(){
         expect(await myAccountAdm.getTextName()).to.be.eq("Regal Auctions")
     })
 });
+
 describe('Cadastro de Produto: ', function(){
     beforeAll(function(){
         newAuctionPage.visit();
@@ -65,25 +81,10 @@ describe('Cadastro de Produto: ', function(){
         expect(await myAccountAdm.getTextName()).to.be.eq("Regal Auctions")
     })
 });
+
 describe('Voltar para a HomePage: ', function(){
     it('Retornando para a HomePage',
     async function(){
         await backHomePage.pageOut();
-    })
-});
-describe('Cadastrar usuário simples: ', function(){
-    beforeAll(function(){
-        homePage.visit();
-    });
-    
-    it('Cadastro de Usuario Simples na página de leilão',
-    async function(){
-        await homePage.btnSignUp.click();
-        await cadastroSimples.loginUser(faker.name.firstName(), faker.internet.userName(),
-        faker.internet.password(), faker.internet.email(), fakerbr.br.cpf());
-        expect(await myAccount.getTextName()).to.be.eq("Regal Auctions")
-    })
-    afterAll(function(){
-        browser.close();
     })
 });
