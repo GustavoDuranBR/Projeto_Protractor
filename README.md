@@ -6,24 +6,29 @@
 
 <p align="justify">
  Projeto em desenvolvimento para realizar teste E2E na Aplicação Web de Leilão. </p> 
- <p>O sistema de leilão permite que o usuário realize o cadastro tanto para adicionar produtos para leilão como cadastro simples para dar lances 
+ <p> O sistema de leilão permite que o usuário realize o cadastro tanto para adicionar produtos para leilão como cadastro simples para dar lances 
  em produtos cadastrados.
 </p>
 
 # 🛠️ Abrir e rodar o projeto 🛠️
 ## Sobre clonagem de um repositório
 
-**Para executar o projeto, clone o repositório do GitHub.com para o seu computador.
-Ao clonar um repositório, você copia o repositório do GitHub.com para a sua máquina local.**
+<p>
+Para executar o projeto, clone o repositório do GitHub.com para o seu computador. <br />
+Ao clonar um repositório, você copia o repositório do GitHub.com para a sua máquina local.
+</p>
 
-## Pré requisitos 
-Protractor é um programa Node.js, portanto, para executá-lo é necessário possuir o Node instalado.
+## Pré requisitos
+<p>
+Protractor é um programa Node.js, portanto, para executá-lo é necessário possuir o Node instalado. <br />
 Ao realizar o download do Protractor via npm, o Node será instalado e o Jasmine será o framework utilizado para teste de interface.
+</p>
 
-
-Abra o projeto no editor de sua preferência.
-No meu caso, utilizei o Visual Studio Code para desenvolver todo o projeto de teste.
-Com o projeto aberto no editor, abre o terminal e navegue até a pasta do projeto.
+<p>
+Abra o projeto no editor de sua preferência.<br />
+No meu caso, utilizei o Visual Studio Code para desenvolver todo o projeto de teste.<br />
+Com o projeto aberto no editor, abra o terminal e navegue até a pasta do projeto.
+</p>
 
 ### Execute os seguintes comandos para executar os testes.
 ```bash
@@ -56,7 +61,7 @@ $ npm run test
 
 ## Explicando o código
 
-Essa parte do códico realiza o cadastro de um usuário sem o privilégio de administrador.
+Essa parte do código realiza o cadastro de um usuário sem o privilégio de administrador.
 ```bash
 describe('Cadastrar usuário sem privilégio administrador: ', function(){
     beforeAll(function(){
@@ -74,8 +79,9 @@ describe('Cadastrar usuário sem privilégio administrador: ', function(){
 
 ```
 
-<p> Essa parte do códico realiza o cadastro de um usuário com o privilégio de administrador.</p>
+<p> Essa parte do código realiza o cadastro de um usuário com o privilégio de administrador. <br />
 Obs. No campo CPF utilizei a opção faker.seed('857.156.050-16') pois o próximo teste irá validar o campo CPF. 
+</p>
 
 ```bash
 describe('Cadastrar usuário com privilégio administrador: ', function(){
@@ -94,7 +100,7 @@ describe('Cadastrar usuário com privilégio administrador: ', function(){
 
 ```
 
-<p> Essa parte do códico realiza o cadastro de um usuário com o privilégio de administrador. </p>
+<p> Essa parte do código realiza o cadastro de um usuário com o privilégio de administrador. </p>
 Obs. O CPF faker.seed('857.156.050-16') utilizado mais uma vez para testar se o campo CPF aceita o registro para usuários diferentes.
 
 ```bash
@@ -114,7 +120,7 @@ describe('Validar Campo CPF: ', function(){
 
 ```
 
-<p> Essa parte do códico realiza o cadastro de um usuário utilizando uma senha com apenas 3 dígitos. </p>
+<p> Essa parte do código realiza o cadastro de um usuário utilizando uma senha com apenas 3 dígitos. </p>
 Obs. Esse teste serve para validar se o campo senha tem alguma formatação para um padrão de senhas.
 
 ```bash
@@ -134,7 +140,7 @@ describe('Validar Campo Senha: ', function(){
 
 ```
 
-<p> Essa parte do códico realiza o cadastro de um produto. </p>
+<p> Essa parte do código realiza o cadastro de um produto. </p>
 
 ```bash
 describe('Cadastro de Produto: ', function(){
@@ -165,22 +171,22 @@ describe('Voltar para a HomePage: ', function(){
 ```
 
 ## Conciderações finais
-
-Os testes foram escritos para falharem propositalmente, pois notei que a aplicação não apresentava nenhuma mensagem sucesso ou falha 
-ao realizar os cadastros de usuários e produtos.
-
+<p>
+Os testes foram escritos para falharem propositalmente, pois notei que a aplicação não apresentava <br /> 
+nenhuma mensagem sucesso ou falha ao realizar os cadastros de usuários e produtos. <br />
 Notei também uma falha no campo CPF e no campo senha, onde a aplicação não fez nenhum tipo de validação dos mesmos.
+Abaixo estão os detalhes das falhas apresentadas e as possíveis mensagens que a aplicação poderia exibir ao usuário: <br />
 
-Abaixo estão os detalhes das falhas apresentadas e as possíveis mensagens que a aplicação poderia exibir ao usuário:
-
-1. Ao realizar o cadastro dos usuários (tanto com privilégio administrador como sem privilégio) a aplicação 
+1. Ao realizar o cadastro dos usuários (tanto com privilégio administrador como sem privilégio) a aplicação <br /> 
 poderia exibir uma mensagem ao usuário cadastrado. ("Usuário cadastrado com sucesso")
 
-2. Ao realizar o cadastro utilizando um CPF já cadastrado para outro usuário, a aplicação deveria exibir uma mensagem 
+2. Ao realizar o cadastro utilizando um CPF já cadastrado para outro usuário, a aplicação deveria exibir uma mensagem <br /> 
 de erro e não aceitar o CPF preenchido. ("CPF já cadastrado no sistema")
 
-3. Ao realizar o cadastro utilizando uma senha com apenas 3 caracteres, a aplicação não deveria aceitar senhas "fracas" para 
+3. Ao realizar o cadastro utilizando uma senha com apenas 3 caracteres, a aplicação não deveria aceitar senhas "fracas" para <br /> 
 segurança dos usuários. ("Senha fraca ou fora do padrão")
 
-4. Ao realizar o cadastro dos produtos a aplicação poderia exibir uma mensagem ao usuário informando que o produto
+4. Ao realizar o cadastro dos produtos a aplicação poderia exibir uma mensagem ao usuário informando que o produto <br />
 foi cadastrado com sucesso. ("Produto cadastrado com sucesso")
+</p>
+
