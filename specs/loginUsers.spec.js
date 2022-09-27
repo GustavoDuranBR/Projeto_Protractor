@@ -13,12 +13,12 @@ var myAccountAdm = require('../pageObjects/myAccountAdm.po.js');
 var myAccount = require('../pageObjects/myAccount.po.js');
 
  
-describe('Cadastrar usuário simples: ', function(){
+describe('Cadastrar usuário sem privilégio administrador: ', function(){
     beforeAll(function(){
         homePage.visit();
     });
     
-    it('Cadastro de Usuario Simples na página de leilão',
+    it('Deve preencher todos os campos do formulário e registrar o usuário sem privilégio administrador e retornar uma mensagem de SUCESSO para o usuário',
     async function(){
         await homePage.btnSignUp.click();
         await cadastroSimples.loginUser(faker.name.firstName(), faker.internet.userName(),
@@ -27,12 +27,12 @@ describe('Cadastrar usuário simples: ', function(){
     })
 });
 
-describe('Acessar página de leilão: ', function(){
+describe('Cadastrar usuário com privilégio administrador: ', function(){
     beforeAll(function(){
         homePage.visit();
     });
 
-    it('Cadastro de Usuario Adm na página de leilão',
+    it('Deve preencher todos os campos do formulário e registrar o usuário com privilégio administrador e retornar uma mensagem de SUCESSO para o usuário',
     async function(){
         await homePage.btnSignUp.click();
         await cadastroADM.loginAdm(faker.name.firstName(), faker.internet.userName(),
@@ -46,7 +46,7 @@ describe('Validar Campo CPF: ', function(){
         homePage.visit();
     });
 
-    it('Cadastro de Usuario Adm com CPF duplicado',
+    it('Deve preencher o formulário utilizando um CPF já cadastrado e e retornar uma mensagem de ERRO para o usuário',
     async function(){
         await homePage.btnSignUp.click();
         await cadastroADM.loginAdm(faker.name.firstName(), faker.internet.userName(),
@@ -60,7 +60,7 @@ describe('Validar Campo Senha: ', function(){
         homePage.visit();
     });
 
-    it('Cadastro de Usuario Adm utilizando senha fraca',
+    it('Deve preencher o formulário utilizando uma Senha fraca e o sistema não deve aceitar e retornar uma mensagem de ERRO para o usuário',
     async function(){
         await homePage.btnSignUp.click();
         await cadastroADM.loginAdm(faker.name.firstName(), faker.internet.userName(),
@@ -74,7 +74,7 @@ describe('Cadastro de Produto: ', function(){
         newAuctionPage.visit();
     });
 
-    it('Cadastrar Produto',
+    it('Deve preencher os campos Name e Initial Value e registrar o produto no sistema e retornar uma mensagem de sucesso para o usuário',
     async function(){
         await newAuctionPage.visit();
         await cadastroTv.registrationTv(fakerbr.commerce.product(), fakerbr.finance.amount());
@@ -83,7 +83,7 @@ describe('Cadastro de Produto: ', function(){
 });
 
 describe('Voltar para a HomePage: ', function(){
-    it('Retornando para a HomePage',
+    it('Deve retornar para a tela de login do sistema',
     async function(){
         await backHomePage.pageOut();
     })
