@@ -1,6 +1,6 @@
 const {element, browser} = require('protractor');
 
-class CadastroTv{
+class CadastroProduto{
     get inputNameProduct(){
         return element(by.xpath('//*[@id="name"]'))
     }
@@ -13,7 +13,7 @@ class CadastroTv{
     get btnSignUp(){
         return element(by.xpath('/html/body/app-root/app-main/div/app-new-auction/form/div[4]/button'))
     }
-    async registrationTv(product, value){
+    async registerProduct(product, value){
         browser.wait(ExpectedConditions.elementToBeClickable(this.inputNameProduct),5000);
         this.inputNameProduct.sendKeys(product);
         this.inputInitialValue.sendKeys(value);
@@ -22,4 +22,4 @@ class CadastroTv{
     }
 }
 
-module.exports = new CadastroTv();
+module.exports = new CadastroProduto();
