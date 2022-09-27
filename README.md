@@ -128,7 +128,7 @@ describe('Validar Campo Senha: ', function(){
         await homePage.btnSignUp.click();
         await cadastroADM.loginAdm(faker.name.firstName(), faker.internet.userName(),
         faker.seed(123), faker.internet.email(), fakerbr.br.cpf());
-        expect(await myAccountAdm.getTextName()).to.be.eq("Utilize uma senha com no minimo 8 caracteres")
+        expect(await myAccountAdm.getTextName()).to.be.eq("Senha fraca ou fora do padrão")
     })
 });
 
@@ -164,4 +164,23 @@ describe('Voltar para a HomePage: ', function(){
 
 ```
 
+## Conciderações finais
 
+Os testes foram escritos para falharem propositalmente, pois notei que a aplicação não apresentava nenhuma mensagem sucesso ou falha 
+ao realizar os cadastros de usuários e produtos.
+
+Notei também uma falha no campo CPF e no campo senha, onde a aplicação não fez nenhum tipo de validação dos mesmos.
+
+Abaixo estão os detalhes das falhas apresentadas e as possíveis mensagens que a aplicação poderia exibir ao usuário:
+
+1. Ao realizar o cadastro dos usuários (tanto com privilégio administrador como sem privilégio) a aplicação 
+poderia exibir uma mensagem ao usuário cadastrado. ("Usuário cadastrado com sucesso")
+
+2. Ao realizar o cadastro utilizando um CPF já cadastrado para outro usuário, a aplicação deveria exibir uma mensagem 
+de erro e não aceitar o CPF preenchido. ("CPF já cadastrado no sistema")
+
+3. Ao realizar o cadastro utilizando uma senha com apenas 3 caracteres, a aplicação não deveria aceitar senhas "fracas" para 
+segurança dos usuários. ("Senha fraca ou fora do padrão")
+
+4. Ao realizar o cadastro dos produtos a aplicação poderia exibir uma mensagem ao usuário informando que o produto
+foi cadastrado com sucesso. ("Produto cadastrado com sucesso")
