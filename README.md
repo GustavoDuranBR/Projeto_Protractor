@@ -58,17 +58,17 @@ $ npm run test
 
 Essa parte do códico realiza o cadastro de um usuário sem o privilégio de administrador.
 ```bash
-describe('Cadastro de usuário sem privilégio administrador: ', function(){
+describe('Cadastrar usuário sem privilégio administrador: ', function(){
     beforeAll(function(){
         homePage.visit();
     });
     
-    it('Cadastro de Usuario preenchendo todos os campos',
+    it('Deve preencher todos os campos do formulário e registrar o usuário sem privilégio administrador e retornar uma mensagem de SUCESSO para o usuário',
     async function(){
         await homePage.btnSignUp.click();
         await cadastroSimples.loginUser(faker.name.firstName(), faker.internet.userName(),
         faker.internet.password(), faker.internet.email(), fakerbr.br.cpf());
-        expect(await myAccount.getTextName()).to.be.eq("Regal Auctions")
+        expect(await myAccount.getTextName()).to.be.eq("Usuário cadastrado com sucesso")
     })
 });
 
@@ -78,17 +78,17 @@ describe('Cadastro de usuário sem privilégio administrador: ', function(){
 Obs. No campo CPF utilizei a opção faker.seed('857.156.050-16') pois o próximo teste irá validar o campo CPF. 
 
 ```bash
-describe('Cadastro de usuário com privilégio administrador: ', function(){
+describe('Cadastrar usuário com privilégio administrador: ', function(){
     beforeAll(function(){
         homePage.visit();
     });
 
-    it('Cadastro de Usuario Adm preenchendo todos os campos',
+    it('Deve preencher todos os campos do formulário e registrar o usuário com privilégio administrador e retornar uma mensagem de SUCESSO para o usuário',
     async function(){
         await homePage.btnSignUp.click();
         await cadastroADM.loginAdm(faker.name.firstName(), faker.internet.userName(),
         faker.internet.password(), faker.internet.email(), faker.seed('857.156.050-16'));
-        expect(await myAccountAdm.getTextName()).to.be.eq("Regal Auctions")
+        expect(await myAccountAdm.getTextName()).to.be.eq("Usuário cadastrado com sucesso")
     })
 });
 
@@ -103,12 +103,12 @@ describe('Validar Campo CPF: ', function(){
         homePage.visit();
     });
 
-    it('Cadastro de Usuario Adm com CPF duplicado',
+    it('Deve preencher o formulário utilizando um CPF já cadastrado e e retornar uma mensagem de ERRO para o usuário',
     async function(){
         await homePage.btnSignUp.click();
         await cadastroADM.loginAdm(faker.name.firstName(), faker.internet.userName(),
         faker.internet.password(), faker.internet.email(), faker.seed('857.156.050-16'));
-        expect(await myAccountAdm.getTextName()).to.be.eq("Regal Auctions")
+        expect(await myAccountAdm.getTextName()).to.be.eq("CPF já cadastrado no sistema")
     })
 });
 
@@ -123,12 +123,12 @@ describe('Validar Campo Senha: ', function(){
         homePage.visit();
     });
 
-    it('Cadastro de Usuario Adm utilizando senha fraca',
+    it('Deve preencher o formulário utilizando uma Senha fraca e o sistema não deve aceitar e retornar uma mensagem de ERRO para o usuário',
     async function(){
         await homePage.btnSignUp.click();
         await cadastroADM.loginAdm(faker.name.firstName(), faker.internet.userName(),
         faker.seed(123), faker.internet.email(), fakerbr.br.cpf());
-        expect(await myAccountAdm.getTextName()).to.be.eq("Regal Auctions")
+        expect(await myAccountAdm.getTextName()).to.be.eq("Utilize uma senha com no minimo 8 caracteres")
     })
 });
 
@@ -142,11 +142,11 @@ describe('Cadastro de Produto: ', function(){
         newAuctionPage.visit();
     });
 
-    it('Cadastrar Produto',
+    it('Deve preencher os campos Name e Initial Value e registrar o produto no sistema e retornar uma mensagem de sucesso para o usuário',
     async function(){
         await newAuctionPage.visit();
-        await cadastroTv.registrationTv(fakerbr.commerce.product(), fakerbr.finance.amount());
-        expect(await myAccountAdm.getTextName()).to.be.eq("Regal Auctions")
+        await cadastroProduto.registrationTv(fakerbr.commerce.product(), fakerbr.finance.amount());
+        expect(await myAccountAdm.getTextName()).to.be.eq("Produto cadastrado com sucesso")
     })
 });
 
@@ -156,7 +156,7 @@ describe('Cadastro de Produto: ', function(){
 
 ```bash
 describe('Voltar para a HomePage: ', function(){
-    it('Retornando para a HomePage',
+    it('Deve retornar para a tela de login do sistema',
     async function(){
         await backHomePage.pageOut();
     })
